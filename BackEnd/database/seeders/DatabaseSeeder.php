@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        /** Role table seeder */
+        Role::factory()->state(['name' => Role::USER_ROLE_NAME])->create();
+        Role::factory()->state(['name' => Role::DOCTOR_ROLE_NAME])->create();
+        Role::factory()->state(['name' => Role::ADMIN_ROLE_NAME])->create();
+
+        /** Create users and attach them roles */
+        User::factory()->state(
+            ['role_id' => 1]
+        )->create();
+        User::factory()->state(
+            ['role_id' => 2]
+        )->create();
+        User::factory()->state(
+            ['role_id' => 3]
+        )->create();
     }
 }
