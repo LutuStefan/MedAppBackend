@@ -2,9 +2,9 @@ version: "3.7"
 services:
   app:
     build:
-      args:
-        user: sammy
-        uid: 1000
+#      args:
+#        user: sammy
+#        uid: 1000
       context: ./
       dockerfile: Dockerfile
     image: travellistt
