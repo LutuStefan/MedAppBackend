@@ -1,14 +1,8 @@
-FROM php:8.0-fpm
+FROM php:8.2-fpm
 
 # Arguments defined in docker-compose.yml
-#ARG user
-#ARG uid
-
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug \
-    && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.client_host = host.docker.internal" >> \
-/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+ARG user
+ARG uid
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -34,6 +28,12 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.client_host = host.docker.internal" >> \
+/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -43,9 +43,15 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 #    chown -R $user:$user /home/$user
 
 #Create php.ini file from php.ini-development
-#RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+RUN #cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
 # Set working directory
+#RUN useradd -G www-data,root -u $uid -d /home/$user $user
+#RUN mkdir -p /home/$user/.composer && \
+#    chown -R $user:$user /home/$user
+
+RUN chown -R www-data:www-data /var/www
+
 WORKDIR /var/www
 
-USER root
+#USER $user

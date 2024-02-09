@@ -20,7 +20,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-    Route::post('/logout', [AuthController::class, 'logOut']);
+
 });
 
 /** Public Routes */
@@ -30,3 +30,4 @@ Route::get('/test', function () {
     \Illuminate\Support\Facades\Log::info('test log');
     return 'success';
 });
+Route::post('/logout', [AuthController::class, 'logOut']);

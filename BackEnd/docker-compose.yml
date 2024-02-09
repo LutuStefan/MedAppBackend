@@ -3,7 +3,7 @@ services:
   app:
     build:
 #      args:
-#        user: sammy
+#        user: user
 #        uid: 1000
       context: ./
       dockerfile: Dockerfile
@@ -17,7 +17,7 @@ services:
       - mobile-app-backend
 
   db:
-    image: mysql:5.7
+    image: mysql:8.0
     container_name: mobile-app-backend-db
     restart: unless-stopped
     environment:
