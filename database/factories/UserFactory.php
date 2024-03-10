@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 class UserFactory extends Factory
@@ -21,7 +22,20 @@ class UserFactory extends Factory
             'role_id' => 1,
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'identificationNumber' => '123456789',
+            'birthDate' => Carbon::create(1996, 10, 10),
+            'gender' => 'male',
+            'address' => json_encode([
+                'country' => 'Romania',
+                'citizenship' => 'Romania',
+                'area' => 'Sector 6',
+                'city' => 'Bucharest',
+                'street' => 'Panselutei',
+                'street_number' => '3AB',
+                'building' => '3',
+                'apartment' => 10
+            ]),
+            'remember_token' => Str::random(10)
         ];
     }
 
