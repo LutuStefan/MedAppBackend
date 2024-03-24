@@ -23,7 +23,11 @@ class User extends Authenticatable
         'lastName',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'identificationNumber',
+        'birthDate',
+        'gender',
+        'address',
     ];
 
     /**
@@ -44,6 +48,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 
 //    public function roles(): BelongsToMany
 //    {

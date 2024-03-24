@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -17,10 +18,9 @@ use App\Http\Controllers\AuthController;
 
 /** Private Routes */
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+    Route::get('/user', [UserController::class, 'getUser']);
     Route::post('/logout', [AuthController::class, 'logOut']);
+    Route::post('/{id}/save-personal-data', [UserController::class, 'savePersonalData']);
 });
 
 /** Public Routes */

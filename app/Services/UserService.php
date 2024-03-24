@@ -44,4 +44,9 @@ class UserService
             'token' => $token
         ];
     }
+
+    public function updateUserInfo(int $userId, array $fields)
+    {
+        $user = User::where('id', $userId);
+    }
 }
