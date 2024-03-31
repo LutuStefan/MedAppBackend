@@ -25,7 +25,7 @@ class User extends Authenticatable
         'password',
         'role_id',
         'identificationNumber',
-        'birthDate',
+//        'birthDate',
         'gender',
         'address',
     ];
@@ -47,11 +47,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'birthDate' => 'datetime',
     ];
-
-
-//    public function roles(): BelongsToMany
-//    {
-//        return $this->belongsToMany(Role::class);
-//    }
 }

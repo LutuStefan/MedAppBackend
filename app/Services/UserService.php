@@ -45,8 +45,22 @@ class UserService
         ];
     }
 
-    public function updateUserInfo(int $userId, array $fields)
+    /**
+     * @param int $userId
+     * @param array $fields
+     * @return void
+     */
+    public function updateUserInfo(int $userId, array $fields): void
     {
-        $user = User::where('id', $userId);
+        $user = User::where('id', $userId)->first();
+
+        $user->firstName = $fields['firstName'] ?? $user->firstName;
+        $user->lastName = $fields['lastName'] ?? $user->lastName;
+        $user->gender = $fields['gender'] ?? $user->gender;
+        $user->email = $fields['email'] ?? $user->email ;
+        $user->identificationNumber = $fields['identificationNumber'] ?? $user->identificationNumber;
+        $user->birthDate = $fields['birthDate'] ?? $user->birthDate;
+
+        $user->save();
     }
 }

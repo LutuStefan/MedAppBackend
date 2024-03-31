@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\UserService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -19,7 +20,7 @@ class UserController extends Controller
         return $request->user();
     }
 
-    public function savePersonalData($id, Request $request)
+    public function savePersonalData($id, Request $request): JsonResponse
     {
         $fields = $request->validate(
             [
@@ -27,13 +28,13 @@ class UserController extends Controller
                 'lastName' => 'required|string',
                 'gender' => 'required|string',
                 'email' => 'required|string',
-                'identificationNumber' => 'required|string',
+                'identificationNumber' => 'required',
                 'birthDate' => 'required|date'
             ]
         );
 
         $this->userService->updateUserInfo($id, $fields);
 
-
+        return new JsonResponse('User information updated successfully!', 200);
     }
 }
