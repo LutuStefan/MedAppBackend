@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user', [UserController::class, 'getUser']);
     Route::post('/logout', [AuthController::class, 'logOut']);
     Route::post('/{id}/save-personal-data', [UserController::class, 'savePersonalData']);
+    Route::post('{id}/update-user-address-info', [UserController::class, 'updateAddressInfo']);
 });
 
 /** Public Routes */

@@ -29,6 +29,7 @@ class UserFactory extends Factory
                 'country' => 'Romania',
                 'citizenship' => 'Romania',
                 'area' => 'Sector 6',
+                'region' => 'Bucharest',
                 'city' => 'Bucharest',
                 'street' => 'Panselutei',
                 'street_number' => '3AB',

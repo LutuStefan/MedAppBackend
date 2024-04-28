@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Repository\UserRepository;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\UnauthorizedException;
+use JetBrains\PhpStorm\NoReturn;
 
 class UserService
 {
@@ -61,6 +62,12 @@ class UserService
         $user->identificationNumber = $fields['identificationNumber'] ?? $user->identificationNumber;
         $user->birthDate = $fields['birthDate'] ?? $user->birthDate;
 
+        $user->save();
+    }
+
+    #[NoReturn] public function updateUserAddressInfo(User $user, $fields): void
+    {
+        $user->address = json_encode($fields);
         $user->save();
     }
 }

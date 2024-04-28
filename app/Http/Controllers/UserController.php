@@ -37,4 +37,24 @@ class UserController extends Controller
 
         return new JsonResponse('User information updated successfully!', 200);
     }
+
+    public function updateAddressInfo(Request $request)
+    {
+        $fields = $request->validate(
+            [
+                'area' => 'required|string',
+                'city' => 'required|string',
+                'region' => 'required|string',
+                'street' => 'required|string',
+                'country' => 'required|string',
+                'building' => 'required|string',
+                'citizenship' => 'required|string',
+                'street_number' => 'required|string',
+                'apartment' => 'required'
+            ]
+        );
+
+        $user = $request->user();
+        $this->userService->updateUserAddressInfo($user, $fields);
+    }
 }
