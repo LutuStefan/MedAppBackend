@@ -30,5 +30,14 @@ class DatabaseSeeder extends Seeder
         User::factory()->state(
             ['role_id' => 3]
         )->create();
+
+        //run the rest of the seeders:
+        $this->call([
+            EnsureSeeder::class,
+            MedicalInsuranceCategorySeeder::class,
+            LocaleSeeder::class,
+            UserInsureInformationSeeder::class,
+            MedicalInsuranceCategoryTranslationsSeeder::class,
+        ]);
     }
 }

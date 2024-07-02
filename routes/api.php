@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MedicalInsuranceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -22,6 +23,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logOut']);
     Route::post('/{id}/save-personal-data', [UserController::class, 'savePersonalData']);
     Route::post('{id}/update-user-address-info', [UserController::class, 'updateAddressInfo']);
+    Route::get('/get-user-insurance-info', [UserController::class, 'getUserInsuranceInfo']);
+
+    //Medical Insurance Category
+    Route::get('/medical-insurance-category/all', [MedicalInsuranceController::class, 'getAllMedicalInsuranceCategoryOptions']);
+    Route::get('/ensure/all', [MedicalInsuranceController::class, 'getAllEnsureOptions']);
 });
 
 /** Public Routes */
