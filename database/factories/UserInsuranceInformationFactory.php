@@ -18,6 +18,8 @@ class UserInsuranceInformationFactory extends Factory
             'ensure_id' => $this->faker->numberBetween(1, 10),
             'insurance_type' => $this->faker->randomElement(['mandatory', 'optional']),
             'medical_insurance_category_id' => rand(1, 5),
+            'medical_insurance_number' => $this->faker->numberBetween(1000000000, 9999999999),
+            'doctor_id' => null
         ];
     }
 
@@ -27,6 +29,15 @@ class UserInsuranceInformationFactory extends Factory
             return [
                 'user_id' => $userId,
                 'ensure_id' => $ensureId
+            ];
+        });
+    }
+
+    public function setFamilyDr(int $drId): UserInsuranceInformationFactory
+    {
+        return $this->state(function (array $attributes) use ($drId) {
+            return [
+                'doctor_id' => $drId
             ];
         });
     }

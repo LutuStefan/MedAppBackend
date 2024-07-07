@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/{id}/save-personal-data', [UserController::class, 'savePersonalData']);
     Route::post('{id}/update-user-address-info', [UserController::class, 'updateAddressInfo']);
     Route::get('/get-user-insurance-info', [UserController::class, 'getUserInsuranceInfo']);
+    Route::post('/save-user-insurance-info', [UserController::class, 'saveUserInsuranceInfo']);
+    Route::post('/user-upload-avatar', [UserController::class, 'uploadAvatar']);
 
     //Medical Insurance Category
     Route::get('/medical-insurance-category/all', [MedicalInsuranceController::class, 'getAllMedicalInsuranceCategoryOptions']);

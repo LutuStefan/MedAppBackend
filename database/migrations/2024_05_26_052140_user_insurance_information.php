@@ -19,7 +19,11 @@ class UserInsuranceInformation extends Migration
             $table->foreignId('ensure_id');
             $table->enum('insurance_type', ['mandatory', 'optional']);
             $table->foreignId('medical_insurance_category_id');
+            $table->string('medical_insurance_number');
+            $table->unsignedBigInteger('doctor_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('doctor_id')->references('id')->on('users');
         });
     }
 
