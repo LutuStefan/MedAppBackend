@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['male', 'female'])->nullable()->default(null);
             $table->json('address')->nullable()->default(null);
             $table->string('avatar')->nullable()->default(null);
+            $table->string('avatar_hash')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
         });

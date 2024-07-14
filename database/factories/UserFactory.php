@@ -37,6 +37,7 @@ class UserFactory extends Factory
                 'apartment' => 10
             ]),
             'avatar' => '/avatars/defaultUserProfile.webp',
+            'avatar_hash' => null,
             'remember_token' => Str::random(10)
         ];
     }
