@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Occupation;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -38,6 +39,9 @@ class DatabaseSeeder extends Seeder
             LocaleSeeder::class,
             UserInsureInformationSeeder::class,
             MedicalInsuranceCategoryTranslationsSeeder::class,
+            EducationLevelsTableSeeder::class,
+            OccupationSeeder::class,
+            UserOccupationSeeder::class,
         ]);
     }
 }
