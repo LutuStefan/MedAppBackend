@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/user-occupation-info/', [UserController::class, 'saveUserOccupationInformation']);
 
     //Medical Insurance Category
-    Route::get('/medical-insurance-category/all', [MedicalInsuranceController::class, 'getAllMedicalInsuranceCategoryOptions']);
+    Route::get('/medical-insurance-category/all/{lang}', [MedicalInsuranceController::class, 'getAllMedicalInsuranceCategoryOptions']);
     Route::get('/ensure/all', [MedicalInsuranceController::class, 'getAllEnsureOptions']);
 });
 
