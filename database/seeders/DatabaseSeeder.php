@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
             EducationLevelsTableSeeder::class,
             OccupationSeeder::class,
             UserOccupationSeeder::class,
+            MedicalInvestigationSeeder::class,
         ]);
     }
 }

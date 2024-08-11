@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MedicalInvestigationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicalInsuranceController;
 use Illuminate\Http\Request;
@@ -34,6 +35,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //Medical Insurance Category
     Route::get('/medical-insurance-category/all/{lang}', [MedicalInsuranceController::class, 'getAllMedicalInsuranceCategoryOptions']);
     Route::get('/ensure/all', [MedicalInsuranceController::class, 'getAllEnsureOptions']);
+
+    //Medical Investigation Routes
+    Route::get('/medical-investigation/{id}', [MedicalInvestigationController::class, 'getMedicalInvestigation']);
+    Route::post('/medical-investigation/saveInterpretation', [MedicalInvestigationController::class, 'saveInterpretation']);
 });
 
 /** Public Routes */
