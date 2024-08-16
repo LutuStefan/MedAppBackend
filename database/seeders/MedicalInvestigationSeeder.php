@@ -23,7 +23,7 @@ class MedicalInvestigationSeeder extends Seeder
             // Create 15 medical investigations for each user
             MedicalInvestigation::factory()
                 ->count(15)
-                ->for($user, 'user') // Assumes relationship method in MedicalInvestigationController model
+                ->for($user, 'user')
                 ->create([
                     'user_id' => $user->id,
                     'doctor_id' => $doctors[array_rand($doctors)],
