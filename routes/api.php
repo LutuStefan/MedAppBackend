@@ -20,6 +20,7 @@ use App\Http\Controllers\AuthController;
 
 /** Private Routes */
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    //User Routes
     Route::get('/user', [UserController::class, 'getUser']);
     Route::post('/logout', [AuthController::class, 'logOut']);
     Route::post('/{id}/save-personal-data', [UserController::class, 'savePersonalData']);
@@ -31,6 +32,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user-occupation-options/{lang}', [UserController::class, 'getUserOccupationOptions']);
     Route::get('/education-level-options/{lang}', [UserController::class, 'getEducationLevelOptions']);
     Route::post('/user-occupation-info/', [UserController::class, 'saveUserOccupationInformation']);
+    Route::get('/get-user-options', [UserController::class, 'getUserOptions']);
 
     //Medical Insurance Category
     Route::get('/medical-insurance-category/all/{lang}', [MedicalInsuranceController::class, 'getAllMedicalInsuranceCategoryOptions']);
@@ -39,6 +41,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //Medical Investigation Routes
     Route::get('/medical-investigation/{id}', [MedicalInvestigationController::class, 'getMedicalInvestigation']);
     Route::post('/medical-investigation/saveInterpretation', [MedicalInvestigationController::class, 'saveInterpretation']);
+    Route::get('/user-medical-history', [MedicalInvestigationController::class, 'getUserMedicalHistory']);
+    Route::get('/medical-investigation-types', [MedicalInvestigationController::class, 'getMedicalInvestigationsTypes']);
+    Route::get('/medical-investigations', [MedicalInvestigationController::class, 'getMedicalInvestigations']);
+    Route::post('/medical-investigation/save-x-ray-investigation', [MedicalInvestigationController::class, 'saveMedicalInvestigation']);
+    Route::get('/get-blood-investigation-options', [MedicalInvestigationController::class, 'getBloodInvestigationOptions']);
+    Route::post('/medical-investigation/save-blood-investigation', [MedicalInvestigationController::class, 'saveBloodInvestigation']);
 });
 
 /** Public Routes */

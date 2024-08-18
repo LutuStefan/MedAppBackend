@@ -22,7 +22,7 @@ class MedicalInvestigationFactory extends Factory
         ];
         $possibleInformation = [
             [
-                'image' => $this->faker->imageUrl(),
+                'image' => 'investigationImages/rxExample.jpeg',
                 'symptoms' => $this->faker->randomElements([
                         'Clear, watery nasal discharge that may become thicker and vary in color.',
                         'Mild to moderate pain in the throat, often worsened by swallowing.',
