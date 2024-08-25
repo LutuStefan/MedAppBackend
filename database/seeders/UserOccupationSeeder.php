@@ -17,6 +17,13 @@ class UserOccupationSeeder extends Seeder
      */
     public function run()
     {
+        for ($i = 1; $i <=3; $i++) {
+            UserOccupations::factory()->create([
+                'user_id' => $i,
+                'occupation_id' => Occupation::factory()->create()->id,
+                'education_level_id' => EducationLevel::factory()->create()->id,
+            ]);
+        }
         UserOccupations::factory()->count(5)->create();
     }
 }

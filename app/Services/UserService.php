@@ -32,7 +32,7 @@ class UserService
     public function logIn(array $fields)
     {
         //Check email
-        $user = User::where('email', $fields['email'])->first();
+        $user = User::with('role')->where('email', $fields['email'])->first();
         //Check password
         if (!$user || !Hash::check($fields['password'], $user->password)) {
             throw new UnauthorizedException('Wrong credentials!', 401);
@@ -69,5 +69,24 @@ class UserService
     {
         $user->address = json_encode($fields);
         $user->save();
+    }
+
+    public function getUserInsuranceInfo(User $user): array
+    {
+        return $user->insuranceInformation->toArray();
+    }
+
+    public function getUserById(int $userId): User
+    {
+        return User::where('id', $userId)->first();
+    }
+
+    public function saveUserInsuranceInfo(User $user, array $fields): void
+    {
+        $userInsuranceInfo = $user->userInsuranceInformation->first();
+        foreach ($fields as $key => $value) {
+            $userInsuranceInfo->$key = $value;
+        }
+        $userInsuranceInfo->save();
     }
 }

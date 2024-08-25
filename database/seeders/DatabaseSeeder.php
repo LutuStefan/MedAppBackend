@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             OccupationSeeder::class,
             UserOccupationSeeder::class,
             MedicalInvestigationSeeder::class,
+//            ConversationSeeder::class,
         ]);
     }
 }
